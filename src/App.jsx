@@ -8,10 +8,9 @@ import { FaCaretRight } from 'react-icons/fa'
 
 function App() {
     const [items, setItems] = useState([]);
-
+    const [showAlert, setShowAlert] = useState(false);
     const [input, setInput] = useState('');
     const [totalCount, setTotalCount] = useState(0)
-    const [showAlert, setShowAlert] = useState(false);
 
     const AddBtn = () => {
         if (input == "") {
@@ -23,7 +22,7 @@ function App() {
                 isSelected: false
             }
             const newLists = [...items, newList];
-    
+
             setItems(newLists)
             setInput('');
             setTotalCount(totalCount + 1);
@@ -65,7 +64,7 @@ function App() {
 
     // const deleteItem = (item, index) => {
     //     const newLists = [...items];
-        
+
     //     newLists[index] = items.filter(index => item.index !== index) 
     //     // const newTodoList = todos.filter(todo => todo.id !== id)
     //     setItems(newLists)
@@ -75,19 +74,19 @@ function App() {
     return (
         <div className="App">
 
-{showAlert && (
-        <div className="alert alert-dismissible alert-primary">
-        <button onClick={() => closeAlert()} type="button" className="btn-close" data-bs-dismiss="alert"></button>
-        <strong>Oh snap!</strong> Write something and try adding again.
-      </div>
-      )}
+            {showAlert && (
+                <div className="alert alert-dismissible alert-primary">
+                    <button onClick={() => closeAlert()} type="button" className="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Oh snap!</strong> Write something and try adding again.
+                </div>
+            )}
 
             <main>
                 <div className="card text-white bg-secondary mb-3" >
                     <div className="card-body">
                         <div className='d-flex justify-content-center'>
-                        {/* <img src='../public/cart.png' className='image'></img> */}
-                        <h2 className="card-title my-2">Cart List</h2>
+                            {/* <img src='../public/cart.png' className='image'></img> */}
+                            <h2 className="card-title my-2">Cart List</h2>
                         </div>
 
                         <div className="card-text pt-2">
@@ -95,7 +94,7 @@ function App() {
                             <div className="form-group d-flex mb-3">
                                 <input value={input} onChange={(e) => setInput(e.target.value)} className="form-control" type="text" placeholder="Write your list here" />
                                 <button onClick={() => AddBtn()} type="button" className="btn btn-primary d-inline">Add</button>
-                                
+
                             </div>
 
                             {items.map((item, index) => (
@@ -130,7 +129,6 @@ function App() {
                                     </div>
                                 </div>
                             ))}
-
 
                             <hr className='my-2' />
 
