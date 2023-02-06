@@ -5,15 +5,17 @@ import { FaCaretLeft } from 'react-icons/fa'
 import { FaCaretRight } from 'react-icons/fa'
 
 
+
 function App() {
     const [items, setItems] = useState([]);
 
     const [input, setInput] = useState('');
     const [totalCount, setTotalCount] = useState(0)
+    const [showAlert, setShowAlert] = useState(false);
 
     const AddBtn = () => {
         if (input == "") {
-            return
+            setShowAlert(true);
         } else {
             const newList = {
                 itemName: input,
@@ -25,6 +27,10 @@ function App() {
             setItems(newLists)
             setInput('');
         }
+    }
+
+    const closeAlert = () => {
+        setShowAlert(false);
     }
 
     const crossoutText = (index) => {
@@ -68,6 +74,13 @@ function App() {
     return (
         <div className="App">
 
+{showAlert && (
+        <div className="alert alert-dismissible alert-primary">
+        <button onClick={() => closeAlert()} type="button" className="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Oh snap!</strong> Write something and try adding again.
+      </div>
+      )}
+
             <main>
                 <div className="card text-white bg-secondary mb-3" >
                     <div className="card-body">
@@ -81,6 +94,7 @@ function App() {
                             <div className="form-group d-flex mb-3">
                                 <input value={input} onChange={(e) => setInput(e.target.value)} className="form-control" type="text" placeholder="Write your list here" />
                                 <button onClick={() => AddBtn()} type="button" className="btn btn-primary d-inline">Add</button>
+                                
                             </div>
 
                             {items.map((item, index) => (

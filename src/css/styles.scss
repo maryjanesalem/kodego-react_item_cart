@@ -5,6 +5,12 @@ div.App {
   height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  .alert {
+    position: fixed;
+    z-index: 2;
+  }
 
   main {
     width: fit-content;
