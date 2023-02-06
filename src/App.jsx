@@ -71,9 +71,9 @@ function App() {
             <main>
                 <div className="card text-white bg-secondary mb-3" >
                     <div className="card-body">
-                        <div className='d-flex'>
-                        <img src='../public/cart.png' className='image'></img>
-                        <h3 className="card-title my-2">Cart List</h3>
+                        <div className='d-flex justify-content-center'>
+                        {/* <img src='../public/cart.png' className='image'></img> */}
+                        <h2 className="card-title my-2">Cart List</h2>
                         </div>
 
                         <div className="card-text pt-2">
