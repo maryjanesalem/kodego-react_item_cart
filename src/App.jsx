@@ -12,15 +12,19 @@ function App() {
     const [totalCount, setTotalCount] = useState(0)
 
     const AddBtn = () => {
-        const newList = {
-            itemName: input,
-            quantity: 1,
-            isSelected: false
+        if (input == "") {
+            return
+        } else {
+            const newList = {
+                itemName: input,
+                quantity: 1,
+                isSelected: false
+            }
+            const newLists = [...items, newList];
+    
+            setItems(newLists)
+            setInput('');
         }
-        const newLists = [...items, newList];
-
-        setItems(newLists)
-        setInput('');
     }
 
     const crossoutText = (index) => {
@@ -67,11 +71,11 @@ function App() {
             <main>
                 <div className="card text-white bg-secondary mb-3" >
                     <div className="card-body">
-                        <h4 className="card-title">List App</h4>
-                        <div className="card-text">
+                        <h1 className="card-title my-2">List App</h1>
+                        <div className="card-text pt-2">
 
                             <div className="form-group d-flex mb-3">
-                                <input value={input} onChange={(e) => setInput(e.target.value)} className="form-control" type="text" placeholder="Write your list here" />
+                                <input value={input} onChange={(e) => setInput(e.target.value)} className="form-control border-primary" type="text" placeholder="Write your list here" />
                                 <button onClick={() => AddBtn()} type="button" className="btn btn-primary d-inline">Add</button>
                             </div>
 
