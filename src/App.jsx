@@ -71,7 +71,7 @@ function App() {
             <main>
                 <div className="card text-white bg-secondary mb-3" >
                     <div className="card-body">
-                        <h1 className="card-title my-2">Cart List</h1>
+                        <h3 className="card-title my-2">Cart List</h3>
                         <div className="card-text pt-2">
 
                             <div className="form-group d-flex mb-3">
