@@ -1,0 +1,63 @@
+div.App {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
+  main {
+    width: fit-content;
+    margin: auto;
+    height: auto;
+
+    .card {
+    //   min-width: 500px;
+
+      .checkbox {
+        margin-right: 10px;
+      }
+
+      .lists {
+        justify-content: space-between;
+
+        .check-true {
+          text-decoration: line-through;
+        }
+      }
+      .quantity {
+        button {
+          width: 30px;
+          height: 30px;
+          padding: 0 0 1px;
+          margin: 0;
+          text-align: center;
+          line-height: 10px;
+          border-radius: 5px;
+        }
+
+        span {
+          width: 20px;
+        }
+      }
+
+      .trash {
+        width: 50px;
+        text-align: right;
+
+        button {
+          border: none;
+          background: none;
+          cursor: pointer;
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      .total-display {
+        width: 100px;
+        text-align: right;
+      }
+    }
+  }
+}
