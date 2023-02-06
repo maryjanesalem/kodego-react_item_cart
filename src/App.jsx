@@ -26,6 +26,7 @@ function App() {
     
             setItems(newLists)
             setInput('');
+            setTotalCount(totalCount + 1);
         }
     }
 
