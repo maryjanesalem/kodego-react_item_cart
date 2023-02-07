@@ -17,9 +17,10 @@ function App() {
             setShowAlert(true);
         } else {
             const newList = {
+                id: Math.floor(Math.random() * 1000),
                 itemName: input,
                 quantity: 1,
-                isSelected: false
+                isSelected: false,
             }
             const newLists = [...items, newList];
 
@@ -41,34 +42,37 @@ function App() {
 
     const increment = (index) => {
         const newLists = [...items];
-        newLists[index].quantity += 1;
+        newLists[index].quantity++;
         setItems(newLists)
         compute()
     }
 
     const decrement = (index) => {
         const newLists = [...items];
-        newLists[index].quantity -= 1;
+
+        newLists[index].quantity--;
+
         setItems(newLists)
         compute()
     }
 
+
+    const deleteItem = (index) => {
+        const newLists = [...items];
+        const deletedItem = newLists.splice(index,1)[0];
+        setItems(newLists);
+        setTotalCount((prevCount) => prevCount - deletedItem.quantity);
+      };
+
     const compute = () => {
-        const totalCount = items.reduce((total, item) => {
+        let total
+
+        total = items.reduce((total, item) => {
             return total + item.quantity
         }, 0);
 
-        setTotalCount(totalCount);
+        setTotalCount(total);
     }
-
-
-    // const deleteItem = (item, index) => {
-    //     const newLists = [...items];
-
-    //     newLists[index] = items.filter(index => item.index !== index) 
-    //     // const newTodoList = todos.filter(todo => todo.id !== id)
-    //     setItems(newLists)
-    // }
 
 
     return (
@@ -84,8 +88,8 @@ function App() {
             <main>
                 <div className="card text-white bg-secondary mb-3" >
                     <div className="card-body">
-                        <div className='d-flex justify-content-center'>
-                            {/* <img src='../public/cart.png' className='image'></img> */}
+                        <div className='d-flex'>
+                            <img src='../public/cart.png' className='image'></img>
                             <h2 className="card-title my-2">Cart List</h2>
                         </div>
 
@@ -123,9 +127,9 @@ function App() {
                                             <button onClick={() => increment(index)} type="button" className="btn btn-primary"> <FaCaretRight /> </button>
 
                                         </div>
-                                        {/* <div className='trash'>
-                                            <button onClick={()=> deleteItem(item, index)} type="button" className="btn btn-secondary"><FaTrashAlt /></button>
-                                        </div> */}
+                                        <div className='trash'>
+                                            <button onClick={() => deleteItem(index)} type="button" className="btn btn-secondary"><FaTrashAlt /></button>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
