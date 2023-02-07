@@ -50,7 +50,11 @@ function App() {
     const decrement = (index) => {
         const newLists = [...items];
 
-        newLists[index].quantity--;
+        if(newLists[index].quantity <= 1) {
+            newLists[index].quantity = 1;
+        } else {
+            newLists[index].quantity--;
+        }
 
         setItems(newLists)
         compute()
