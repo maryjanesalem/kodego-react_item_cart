@@ -56,7 +56,6 @@ function App() {
         compute()
     }
 
-
     const deleteItem = (index) => {
         const newLists = [...items];
         const deletedItem = newLists.splice(index,1)[0];
@@ -89,7 +88,7 @@ function App() {
                 <div className="card text-white bg-secondary mb-3" >
                     <div className="card-body">
                         <div className='d-flex'>
-                            <img src='../public/cart.png' className='image'></img>
+                            <img src='./cart.png' className='image'></img>
                             <h2 className="card-title my-2">Cart List</h2>
                         </div>
 
