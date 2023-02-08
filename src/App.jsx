@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./css/styles.scss";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaCaretLeft } from "react-icons/fa";
@@ -9,6 +9,10 @@ function App() {
   const [showAlert, setShowAlert] = useState(false);
   const [input, setInput] = useState("");
   const [totalCount, setTotalCount] = useState(0);
+
+  useEffect(() => {
+    return compute()
+  }, [items]);
 
   const AddBtn = () => {
     if (input == "") {
@@ -40,7 +44,6 @@ function App() {
     const newLists = [...items];
     newLists[index].quantity++;
     setItems(newLists);
-    compute();
   };
 
   const decrement = (index) => {
@@ -52,7 +55,6 @@ function App() {
       newLists[index].quantity--;
     }
     setItems(newLists);
-    compute();
   };
 
   const deleteItem = (index) => {
